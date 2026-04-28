@@ -1,0 +1,21 @@
+{
+    "name": "tsaqif/learn-extension",
+    "description": "This is learn extension",
+    "type": "typo3-cms-extension",
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "require": {
+        "typo3/cms-core": "^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tsaqif\\LearnExtension\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "learn_extension"
+        }
+    }
+}
