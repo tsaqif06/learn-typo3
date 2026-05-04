@@ -15,6 +15,7 @@
 	},
 	"require": {
 		"b13/make": "^0.1.8",
+		"helhum/typo3-console": "^8.3",
 		"tsaqif/learn-extension": "@dev",
 		"typo3/cms-backend": "^13.4",
 		"typo3/cms-belog": "^13.4",
