@@ -14,7 +14,15 @@ class DateController extends ActionController {
         //     "Welt",
         //     "Freut mich sehr"
         // ];
-        $this->view->assign('date', new DateTime());
+        $this->view->assign('action', __METHOD__);
+        $this->view->assign('date', time());
+
+        return $this->htmlResponse();
+    }
+
+     public function dateoutputDetailAction(int $date): ResponseInterface {
+        $this->view->assign('action', __METHOD__);
+        $this->view->assign('date', $date);
 
         return $this->htmlResponse();
     }

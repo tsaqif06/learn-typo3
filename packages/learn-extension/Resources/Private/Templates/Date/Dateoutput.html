@@ -14,5 +14,8 @@
     </ul>
   </f:comment>
 
-  <f:format.date date="{date}" format="d.m.Y" />
+  <p>{action}</p>
+  <f:link.action action="dateoutputDetail" arguments="{date: date}">
+    <f:format.date date="{date}" format="d.m.Y" />
+  </f:link.action>
 </html>
