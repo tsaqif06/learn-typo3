@@ -1,0 +1,18 @@
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+  data-namespace-typo3-fluid="true"
+>
+  <f:comment>
+    <f:debug>{_all}</f:debug>
+    <h1>{test}</h1>
+    <ul>
+      <f:for each="{test}" as="item">
+        <li>{item}</li>
+      </f:for>
+    </ul>
+  </f:comment>
+
+  <f:format.date date="{date}" format="d.m.Y" />
+</html>

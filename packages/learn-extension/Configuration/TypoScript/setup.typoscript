@@ -1,5 +1,5 @@
-page.999 = FLUIDTEMPLATE
-page.999.templateName = Test
-page.999.templateRootPaths {
-    10 = EXT:learn_extension/Resources/Private/Templates/
-}
+#page.99 = FLUIDTEMPLATE
+#page.99.templateName = Test
+#page.99.templateRootPaths {
+#    10 = EXT:learn_extension/Resources/Private/Templates/
+#}

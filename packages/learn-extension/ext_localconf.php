@@ -3,7 +3,9 @@
 TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     extensionName: 'learn_extension',
     pluginName: 'dateoutput',
-    controllerActions: [],
+    controllerActions: [
+        Tsaqif\LearnExtension\Controller\DateController::class => "dateoutput"
+    ],
     nonCacheableControllerActions: [],
     pluginType: TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
