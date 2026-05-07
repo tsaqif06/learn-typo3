@@ -19,7 +19,7 @@ return [
         'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'type' => 'record_type',
+        // 'type' => 'record_type',
         'default_sortby' => 'ORDER BY title',
         'delete' => 'deleted',
         'enablecolumns' => [
@@ -30,46 +30,29 @@ return [
             'ignorePageTypeRestriction' => true,
         ],
         'typeicon_classes' => [
-            'default' => 'tx_examples-dummy',
+            'default' => 'content-target',
         ],
     ],
     'types' => [
-        // NOTE: there are alternate versions of this row to demonstrate various features
-        //		'0' => array('showitem' => 'hidden, record_type, title, some_date '),
-        // Use this row to demonstrate usage of palettes
-        0 => ['showitem' => 'hidden, --palette--;Spezial Felder;special'],
-        // Use this row when discussing special configuration nowrap
-        // (paste this into the description field: This is a very long text that will not wrap when I get to the end of the box, which is very far away, away, away, away, away, away)
-        //		'0' => array('showitem' => 'hidden, record_type, title, description;;;nowrap, some_date;;1 '),
-        // Additional types
-        1 => ['showitem' => 'record_type, title, hidden,'],
-        2 => ['showitem' => 'title, some_date, hidden, record_type,'],
+        0 => ['showitem' => '
+            hidden,
+            --palette--;;palette1,
+            --palette--;;palette2,
+            --palette--;;palette3
+        '],
     ],
     'palettes' => [
-        'special' => [
-            'showitem' => '
-                record_type, --linebreak--,
-                title, --linebreak--,
-                description, --linebreak--,
-                some_date, enforce_date
-            '
-        ],
-        'description' => 'Hallo ich bin eine Palette',
+       'palette1' => [
+        'showitem' => 'title, author',
+       ],
+       'palette2' => [
+        'showitem' => 'isbn, buy_date, --linebreak--, summary, --linebreak--, rating',
+       ],
+       'palette3' => [
+        'showitem' => 'reading_done, reading_date',
+       ],
     ],
     'columns' => [
-        'record_type' => [
-            'exclude' => 0,
-            'label' => 'Type',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['label' => 'Typ 0', 'value' => 0],
-                    ['label' => 'Typ 1', 'value' => 1],
-                    ['label' => 'Typ 2', 'value' => 2],
-                ],
-            ],
-        ],
         'title' => [
             'exclude' => 0,
             'label' => 'Titel',
@@ -80,29 +63,91 @@ return [
                 'eval' => 'trim',
             ],
         ],
-        'some_date' => [
+        'author' => [
             'exclude' => 0,
-            'label' => 'some_date',
+            'label' => 'Autor',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'required' => true,
+                'eval' => 'trim',
+            ],
+        ],
+        'isbn' => [
+            'exclude' => 0,
+            'label' => 'ISBN',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'required' => false,
+            ],
+        ],
+        'summary' => [
+            'exclude' => 0,
+            'label' => 'Zusammenfassung',
+            'config' => [
+                'type' => 'text',
+                'enableRichtext' => true,
+                'cols' => 50,
+                'rows' => 3,
+            ],
+        ],
+        'rating' => [
+            'exclude' => 0,
+            'label' => 'Bewertung',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    [
+                        'label' => '1 Stern',
+                        'value' => 1,
+                    ],
+                    [
+                        'label' => '2 Sterne',
+                        'value' => 2,
+                    ],
+                    [
+                        'label' => '3 Sterne',
+                        'value' => 3,
+                    ],
+                    [
+                        'label' => '4 Sterne',
+                        'value' => 4,
+                    ],
+                    [
+                        'label' => '5 Sterne',
+                        'value' => 5,
+                    ],
+                ],
+                'default' => 1,
+            ],
+        ],
+        'buy_date' => [
+            'exclude' => 0,
+            'label' => 'Kaufdatum',
             'config' => [
                 'type' => 'datetime',
                 'format' => 'date',
                 'size' => 12,
             ],
         ],
-        'enforce_date' => [
+        'reading_done' => [
             'exclude' => 0,
-            'label' => 'enforce_date',
+            'label' => 'Fertig gelesen',
             'config' => [
                 'type' => 'check',
             ],
+            'onChange' => 'reload',
         ],
-        'description' => [
+        'reading_date' => [
             'exclude' => 0,
-            'label' => 'description',
+            'label' => 'Abschlussdatum',
+            'displayCond' => 'FIELD:reading_done:=:1',
             'config' => [
-                'type' => 'text',
-                'cols' => 50,
-                'rows' => 3,
+                'type' => 'datetime',
+                'format' => 'date',
+                'size' => 12,
             ],
         ],
     ],
