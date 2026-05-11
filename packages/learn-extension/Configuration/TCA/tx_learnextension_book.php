@@ -30,7 +30,7 @@ return [
             'ignorePageTypeRestriction' => true,
         ],
         'typeicon_classes' => [
-            'default' => 'content-target',
+            'default' => 'book-record',
         ],
     ],
     'types' => [
