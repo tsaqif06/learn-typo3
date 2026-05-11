@@ -137,6 +137,11 @@ return [
             'label' => 'Fertig gelesen',
             'config' => [
                 'type' => 'check',
+                'items' => [
+                    [
+                        'label' => 'Ja',
+                    ],
+                ],
             ],
             'onChange' => 'reload',
         ],

@@ -6,5 +6,29 @@
 >
   <f:debug>{_all}</f:debug>
 
-  <f:for each="{books}" as="book"> {book} </f:for>
+  <table>
+    <thead>
+      <tr>
+        <th>Titel</th>
+        <th>Autor</th>
+        <th>Bewertung</th>
+        <th>Fertig?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <f:for each="{books}" as="book">
+        <tr>
+          <td>{book.title}</td>
+          <td>{book.author}</td>
+          <td>{book.rating}</td>
+          <td>
+            <f:if condition="{book.readingDone}">
+              <f:then>Ja</f:then>
+              <f:else>Nein</f:else>
+            </f:if>
+          </td>
+        </tr>
+      </f:for>
+    </tbody>
+  </table>
 </html>
