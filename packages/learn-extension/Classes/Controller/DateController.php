@@ -6,8 +6,10 @@ use DateTime;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class DateController extends ActionController {
-    public function dateoutputAction(): ResponseInterface {
+class DateController extends ActionController
+{
+    public function dateoutputAction(): ResponseInterface
+    {
         // $text = "Hallöchen";
         // $text = [
         //     "Hallo",
@@ -20,7 +22,8 @@ class DateController extends ActionController {
         return $this->htmlResponse();
     }
 
-     public function dateoutputDetailAction(int $date): ResponseInterface {
+    public function dateoutputDetailAction(int $date): ResponseInterface
+    {
         $this->view->assign('action', __METHOD__);
         $this->view->assign('date', $date);
 
