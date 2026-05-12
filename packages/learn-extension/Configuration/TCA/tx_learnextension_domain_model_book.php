@@ -17,6 +17,8 @@ return [
     'ctrl' => [
         'title' => 'Book',
         'label' => 'title',
+        'label_alt' => 'isbn',
+        'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         // 'type' => 'record_type',

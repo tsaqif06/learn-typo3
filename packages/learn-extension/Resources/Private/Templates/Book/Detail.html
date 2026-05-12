@@ -1,0 +1,26 @@
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+  data-namespace-typo3-fluid="true"
+>
+  <f:link.action action="list"> Zurück zur Liste </f:link.action>
+  <h1>{book.title}</h1>
+  <ul>
+    <li>Autor: {book.author}</li>
+    <li>ISBN: {book.isbn}</li>
+    <li>Zusammenfassung: {book.summary -> f:format.html()}</li>
+    <li>Bewertung: {book.rating}</li>
+    <li>Kaufdatum: {f:format.date(date: book.buyDate, format: 'd.m.Y')}</li>
+    <li>
+      Fertig gelesen?: {f:if(condition: book.readingDone, then: 'Ja', else:
+      'Nein')}
+    </li>
+    <f:if condition="{book.readingDone}">
+      <li>
+        Fertig gelesen Datum: {f:format.date(date: book.readingDate, format:
+        'd.m.Y')}
+      </li>
+    </f:if>
+  </ul>
+</html>
