@@ -17,8 +17,9 @@ return [
     'ctrl' => [
         'title' => 'Book',
         'label' => 'title',
-        'label_alt' => 'isbn',
-        'label_alt_force' => true,
+        'label_alt' => 'isbn, rating, reading_done',
+        // 'label_alt_force' => true,
+        'label_userFunc' => \Tsaqif\LearnExtension\UserFuncs\LabelsUserFunc::class . '->bookLabel',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         // 'type' => 'record_type',
