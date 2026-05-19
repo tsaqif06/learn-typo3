@@ -3,16 +3,33 @@
 namespace Tsaqif\LearnExtension\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Annotation\Validate;
 
 class Book extends AbstractEntity 
 {
+    #[Validate(['validator' => 'NotEmpty'])]
     protected string $title = '';
+
+    #[Validate(['validator' => 'NotEmpty'])]
     protected string $author = '';
+
+    #[Validate(['validator' => 'RegularExpression', 'options' => ['regularExpression' => '/^[0-9]{13}$/']])]
     protected string $isbn = '';
+
     protected string $summary = '';
+
+    #[Validate(['validator' => 'Integer'])]
+    #[Validate(['validator' => 'NumberRange', 'options' => ['minimum' => 1, 'maximum' => 5]])]
     protected int $rating = 1;
+
+    #[Validate(['validator' => 'Integer'])]
+    #[Validate(['validator' => 'NumberRange', 'options' => ['minimum' => 0]])]
     protected int $buyDate = 0;
+
     protected bool $readingDone = false;
+
+    #[Validate(['validator' => 'Integer'])]
+    #[Validate(['validator' => 'NumberRange', 'options' => ['minimum' => 0]])]
     protected int $readingDate = 0;
 
     /**
