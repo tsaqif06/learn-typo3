@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fc518ebeecfb6d180eb19c31f84a243",
+    "content-hash": "27ee97a3fee125a619a2a1c5ff11a0cf",
     "packages": [
         {
             "name": "b13/make",
@@ -1831,6 +1831,48 @@
                 "source": "https://github.com/phpstan/phpdoc-parser/tree/2.3.2"
             },
             "time": "2026-01-25T14:56:51+00:00"
+        },
+        {
+            "name": "praetorius/fluid-companion",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/s2b/fluid-companion.git",
+                "reference": "b8259b922e5869a0172235d175e0baa9972a1346"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/s2b/fluid-companion/zipball/b8259b922e5869a0172235d175e0baa9972a1346",
+                "reference": "b8259b922e5869a0172235d175e0baa9972a1346",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/console": "^6.4 || ^7.0",
+                "typo3/cms-core": "^13.4 || ^12.4",
+                "typo3/cms-fluid": "^13.4 || ^12.4"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "fluid_companion"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Praetorius\\FluidCompanion\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Companion extension for Fluid IDE integrations",
+            "support": {
+                "issues": "https://github.com/s2b/fluid-companion/issues",
+                "source": "https://github.com/s2b/fluid-companion/tree/1.0.0"
+            },
+            "time": "2026-04-19T11:35:23+00:00"
         },
         {
             "name": "psr/cache",
@@ -7346,10 +7388,10 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2.0"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }

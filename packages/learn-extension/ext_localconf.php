@@ -14,8 +14,10 @@ TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     extensionName: 'learn_extension',
     pluginName: 'book',
     controllerActions: [
-        Tsaqif\LearnExtension\Controller\BookController::class => "list, detail"
+        Tsaqif\LearnExtension\Controller\BookController::class => "list, detail, new, create"
     ],
-    nonCacheableControllerActions: [],
+    nonCacheableControllerActions: [
+        Tsaqif\LearnExtension\Controller\BookController::class => "new, create"
+    ],
     pluginType: TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );

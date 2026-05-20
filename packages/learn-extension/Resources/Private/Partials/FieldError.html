@@ -1,0 +1,19 @@
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+  data-namespace-typo3-fluid="true"
+>
+  <f:form.validationResults for="newBook.{field}">
+    <f:if condition="{validationResults.errors}">
+      <span
+        class="error-msg"
+        style="color: red; font-size: 0.85em; display: block; margin-top: 5px"
+      >
+        <f:for each="{validationResults.errors}" as="error">
+          {error.message}
+        </f:for>
+      </span>
+    </f:if>
+  </f:form.validationResults>
+</html>

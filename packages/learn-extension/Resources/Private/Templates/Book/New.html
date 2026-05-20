@@ -1,0 +1,124 @@
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+  data-namespace-typo3-fluid="true"
+>
+  <f:link.action action="list">Zurück zur Liste</f:link.action>
+
+  <h1>Neues Buch anlegen</h1>
+
+  <f:form.validationResults for="newBook">
+    <f:if condition="{validationResults.flattenedErrors}">
+      <div
+        class="alert alert-danger"
+        style="
+          color: red;
+          border: 1px solid red;
+          padding: 10px;
+          margin-bottom: 20px;
+        "
+      >
+        <strong
+          >Huch! Das Formular enthält Fehler. Bitte korrigiere die markierten
+          Felder.</strong
+        >
+      </div>
+    </f:if>
+  </f:form.validationResults>
+
+  <f:form action="create" name="newBook" objectName="newBook">
+    <div class="form-group">
+      <label for="title">Titel <span style="color: red">*</span></label>
+      <f:form.textfield property="title" id="title" class="form-control" />
+      <f:render partial="FieldError" arguments="{field: 'title'}" />
+    </div>
+
+    <div class="form-group">
+      <label for="author">Autor <span style="color: red">*</span></label>
+      <f:form.textfield property="author" id="author" class="form-control" />
+      <f:render partial="FieldError" arguments="{field: 'author'}" />
+    </div>
+
+    <div class="form-group">
+      <label for="isbn">ISBN</label>
+      <f:form.textfield property="isbn" id="isbn" class="form-control" />
+      <f:render partial="FieldError" arguments="{field: 'isbn'}" />
+    </div>
+
+    <div class="form-group">
+      <label for="summary">Zusammenfassung</label>
+      <f:form.textarea
+        property="summary"
+        id="summary"
+        cols="50"
+        rows="3"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="buy_date">Kaufdatum</label>
+      <f:form.textfield
+        property="buy_date"
+        id="buy_date"
+        class="form-control"
+      />
+      <f:render partial="FieldError" arguments="{field: 'buy_date'}" />
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Bewertung</label>
+      <f:form.select
+        property="rating"
+        id="rating"
+        class="form-control"
+        options="{
+            1: '1 Stern',
+            2: '2 Sterne',
+            3: '3 Sterne',
+            4: '4 Sterne',
+            5: '5 Sterne'
+        }"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>
+        <f:form.checkbox property="reading_done" value="1" id="reading_done" />
+        Fertig gelesen?
+      </label>
+    </div>
+
+    <div class="form-group" id="reading-date-container" style="display: none">
+      <label for="reading_date">Fertig gelesen Datum</label>
+      <f:form.textfield
+        type="date"
+        property="reading_date"
+        id="reading_date"
+        class="form-control"
+      />
+    </div>
+
+    <br />
+    <f:form.submit value="Buch speichern" class="btn btn-success" />
+  </f:form>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkbox = document.getElementById("reading_done");
+    const dateContainer = document.getElementById("reading-date-container");
+
+    function toggleDateFields() {
+      if (checkbox.checked) {
+        dateContainer.style.display = "block";
+      } else {
+        dateContainer.style.display = "none";
+      }
+    }
+
+    toggleDateFields();
+    checkbox.addEventListener("change", toggleDateFields);
+  });
+</script>

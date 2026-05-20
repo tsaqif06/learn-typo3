@@ -29,4 +29,15 @@ class BookController extends ActionController
         $this->view->assign('book', $book);
         return $this->htmlResponse();
     }
+
+    public function newAction(): ResponseInterface 
+    {
+        return $this->htmlResponse();
+    }
+
+    public function createAction(Book $newBook): ResponseInterface
+    {
+        $this->bookRepository->add($newBook);
+        return $this->redirect('list');
+    }
 }
