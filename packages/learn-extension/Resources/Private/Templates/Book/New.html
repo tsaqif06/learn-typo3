@@ -8,6 +8,8 @@
 
   <h1>Neues Buch anlegen</h1>
 
+  <f:flashMessages />
+
   <f:form.validationResults for="newBook">
     <f:if condition="{validationResults.flattenedErrors}">
       <div
@@ -60,11 +62,12 @@
     <div class="form-group">
       <label for="buy_date">Kaufdatum</label>
       <f:form.textfield
-        property="buy_date"
+        type="date"
+        property="buyDate"
         id="buy_date"
         class="form-control"
       />
-      <f:render partial="FieldError" arguments="{field: 'buy_date'}" />
+      <f:render partial="FieldError" arguments="{field: 'buyDate'}" />
     </div>
 
     <div class="form-group">
@@ -85,19 +88,21 @@
 
     <div class="form-group">
       <label>
-        <f:form.checkbox property="reading_done" value="1" id="reading_done" />
+        <f:form.checkbox property="readingDone" value="1" id="reading_done" />
         Fertig gelesen?
       </label>
+      <f:render partial="FieldError" arguments="{field: 'readingDone'}" />
     </div>
 
     <div class="form-group" id="reading-date-container" style="display: none">
       <label for="reading_date">Fertig gelesen Datum</label>
       <f:form.textfield
         type="date"
-        property="reading_date"
+        property="readingDate"
         id="reading_date"
         class="form-control"
       />
+      <f:render partial="FieldError" arguments="{field: 'readingDate'}" />
     </div>
 
     <br />

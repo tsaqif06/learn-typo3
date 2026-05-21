@@ -13,7 +13,7 @@ class Book extends AbstractEntity
     #[Validate(['validator' => 'NotEmpty'])]
     protected string $author = '';
 
-    #[Validate(['validator' => 'RegularExpression', 'options' => ['regularExpression' => '/^[0-9]{13}$/']])]
+    #[Validate(['validator' => 'RegularExpression', 'options' => ['regularExpression' => '/^[0-9]+$/']])]
     protected string $isbn = '';
 
     protected string $summary = '';
@@ -22,15 +22,9 @@ class Book extends AbstractEntity
     #[Validate(['validator' => 'NumberRange', 'options' => ['minimum' => 1, 'maximum' => 5]])]
     protected int $rating = 1;
 
-    #[Validate(['validator' => 'Integer'])]
-    #[Validate(['validator' => 'NumberRange', 'options' => ['minimum' => 0]])]
-    protected int $buyDate = 0;
-
+    protected ?\DateTime $buyDate = null;
     protected bool $readingDone = false;
-
-    #[Validate(['validator' => 'Integer'])]
-    #[Validate(['validator' => 'NumberRange', 'options' => ['minimum' => 0]])]
-    protected int $readingDate = 0;
+    protected ?\DateTime $readingDate = null;
 
     /**
      * Get the value of title
@@ -115,7 +109,7 @@ class Book extends AbstractEntity
     /**
      * Get the value of buyDate
      */
-    public function getBuyDate(): int
+    public function getBuyDate(): ?\DateTime
     {
         return $this->buyDate;
     }
@@ -123,7 +117,7 @@ class Book extends AbstractEntity
     /**
      * Set the value of buyDate
      */
-    public function setBuyDate(int $buyDate): void
+    public function setBuyDate(?\DateTime $buyDate): void
     {
         $this->buyDate = $buyDate;
     }
@@ -147,7 +141,7 @@ class Book extends AbstractEntity
     /**
      * Get the value of readingDate
      */
-    public function getReadingDate(): int
+    public function getReadingDate(): ?\DateTime
     {
         return $this->readingDate;
     }
@@ -155,7 +149,7 @@ class Book extends AbstractEntity
     /**
      * Set the value of readingDate
      */
-    public function setReadingDate(int $readingDate): void
+    public function setReadingDate(?\DateTime $readingDate): void
     {
         $this->readingDate = $readingDate;
     }

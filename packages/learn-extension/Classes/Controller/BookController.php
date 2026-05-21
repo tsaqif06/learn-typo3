@@ -35,9 +35,39 @@ class BookController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function createAction(Book $newBook): ResponseInterface
+    protected function initializeCreateAction(): void
     {
+        $propertyMappingConfiguration = $this->arguments['newBook']
+            ->getPropertyMappingConfiguration();
+
+        $propertyMappingConfiguration->forProperty('buyDate')
+            ->setTypeConverterOption(
+                \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::class,
+                \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                'Y-m-d'
+        );
+
+        $propertyMappingConfiguration->forProperty('readingDate')
+            ->setTypeConverterOption(
+                \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::class,
+                \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                'Y-m-d'
+        );
+    }   
+
+    public function createAction(Book $newBook)
+    {
+        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($newBook);
+        // die;
+
         $this->bookRepository->add($newBook);
+        
+        $this->addFlashMessage(
+            'Das Buch wurde erfolgreich gespeichert.',
+            'Erfolg!',
+            \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK
+        );
+
         return $this->redirect('list');
     }
 }

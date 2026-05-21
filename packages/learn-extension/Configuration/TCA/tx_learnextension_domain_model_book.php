@@ -83,6 +83,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'required' => false,
+                'eval' => 'unique',
             ],
         ],
         'summary' => [
