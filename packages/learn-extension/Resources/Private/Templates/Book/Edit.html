@@ -6,7 +6,7 @@
 >
   <f:link.action action="list">Zurück zur Liste</f:link.action>
 
-  <h1>Neues Buch anlegen</h1>
+  <h1>Buch bearbeiten</h1>
 
   <f:flashMessages />
 
@@ -29,9 +29,9 @@
     </f:if>
   </f:form.validationResults>
 
-  <f:form action="create" name="newBook" objectName="newBook">
-    <f:render partial="Book/FormFields" />
-    <f:form.submit value="Buch jetzt anlegen" class="btn btn-success" />
+  <f:form action="update" name="book" object="{book}">
+    <f:render partial="Book/FormFields" arguments="{book: book}" />
+    <f:form.submit value="Änderungen speichern" class="btn btn-success" />
   </f:form>
 </html>
 

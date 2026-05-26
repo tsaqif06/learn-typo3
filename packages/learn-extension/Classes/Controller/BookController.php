@@ -50,7 +50,7 @@ class BookController extends ActionController
                 \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                 'Y-m-d'
         );
-    }   
+    }
 
     public function createAction(Book $newBook): ResponseInterface 
     {
@@ -61,6 +61,45 @@ class BookController extends ActionController
 
         $this->addFlashMessage(
             'Das Buch wurde erfolgreich gespeichert.',
+            'Erfolg!',
+            \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK
+        );
+
+        return $this->redirect('list');
+    }
+
+    public function editAction(Book $book): ResponseInterface
+    {
+        $this->view->assign('book', $book);
+        return $this->htmlResponse();
+    }
+
+    protected function initializeUpdateAction(): void
+    {
+        $propertyMappingConfiguration = $this->arguments['book']
+            ->getPropertyMappingConfiguration();
+
+        $propertyMappingConfiguration->forProperty('buyDate')
+            ->setTypeConverterOption(
+                \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::class,
+                \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                'Y-m-d'
+        );
+
+        $propertyMappingConfiguration->forProperty('readingDate')
+            ->setTypeConverterOption(
+                \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::class,
+                \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                'Y-m-d'
+        );
+    }
+
+    public function updateAction(Book $book): ResponseInterface
+    {
+        $this->bookRepository->update($book);
+
+        $this->addFlashMessage(
+            'Das Buch wurde erfolgreich aktualisiert.',
             'Erfolg!',
             \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK
         );

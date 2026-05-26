@@ -1,0 +1,85 @@
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+  data-namespace-typo3-fluid="true"
+>
+  <f:comment> <f:debug>{_all}</f:debug> </f:comment>
+  <div class="form-group">
+    <label for="title">Titel <span style="color: red">*</span></label>
+    <f:form.textfield property="title" id="title" class="form-control" />
+    <f:render partial="FieldError" arguments="{field: 'title'}" />
+  </div>
+
+  <div class="form-group">
+    <label for="author">Autor <span style="color: red">*</span></label>
+    <f:form.textfield property="author" id="author" class="form-control" />
+    <f:render partial="FieldError" arguments="{field: 'author'}" />
+  </div>
+
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <f:form.textfield property="isbn" id="isbn" class="form-control" />
+    <f:render partial="FieldError" arguments="{field: 'isbn'}" />
+  </div>
+
+  <div class="form-group">
+    <label for="summary">Zusammenfassung</label>
+    <f:form.textarea
+      property="summary"
+      id="summary"
+      cols="50"
+      rows="3"
+      class="form-control"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="buy_date">Kaufdatum</label>
+    <f:form.textfield
+      type="date"
+      property="buyDate"
+      id="buy_date"
+      class="form-control"
+      value="{book.buyDate -> f:format.date(format: 'Y-m-d')}"
+    />
+    <f:render partial="FieldError" arguments="{field: 'buyDate'}" />
+  </div>
+
+  <div class="form-group">
+    <label for="rating">Bewertung</label>
+    <f:form.select
+      property="rating"
+      id="rating"
+      class="form-control"
+      options="{
+            1: '1 Stern',
+            2: '2 Sterne',
+            3: '3 Sterne',
+            4: '4 Sterne',
+            5: '5 Sterne'
+        }"
+    />
+  </div>
+
+  <div class="form-group">
+    <label>
+      <f:form.checkbox property="readingDone" value="1" id="reading_done" />
+      Fertig gelesen?
+    </label>
+    <f:render partial="FieldError" arguments="{field: 'readingDone'}" />
+  </div>
+
+  <div class="form-group" id="reading-date-container" style="display: none">
+    <label for="reading_date">Fertig gelesen Datum</label>
+    <f:form.textfield
+      type="date"
+      property="readingDate"
+      id="reading_date"
+      class="form-control"
+      value="{book.readingDate -> f:format.date(format: 'Y-m-d')}"
+    />
+    <f:render partial="FieldError" arguments="{field: 'readingDate'}" />
+  </div>
+  <br />
+</html>

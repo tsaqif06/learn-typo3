@@ -4,12 +4,10 @@
   xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
   data-namespace-typo3-fluid="true"
 >
-  <f:link.action action="new">
-    Neues Buch hinzufügen
-  </f:link.action>
+  <f:link.action action="new"> Neues Buch hinzufügen </f:link.action>
 
   <f:flashMessages />
-  
+
   <table>
     <thead>
       <tr>
@@ -17,6 +15,7 @@
         <th>Autor</th>
         <th>Bewertung</th>
         <th>Fertig?</th>
+        <th>Aktionen</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +33,11 @@
               <f:then>Ja</f:then>
               <f:else>Nein</f:else>
             </f:if>
+          </td>
+          <td>
+            <f:link.action action="edit" arguments="{book: book}">
+              Bearbeiten
+            </f:link.action>
           </td>
         </tr>
       </f:for>
