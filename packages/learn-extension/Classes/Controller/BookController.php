@@ -11,10 +11,7 @@ class BookController extends ActionController
 {
     public function __construct(
         private readonly BookRepository $bookRepository
-    )
-    {
-        
-    }
+    ) {}
 
     public function listAction(): ResponseInterface
     {
@@ -30,7 +27,7 @@ class BookController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function newAction(): ResponseInterface 
+    public function newAction(): ResponseInterface
     {
         return $this->htmlResponse();
     }
@@ -55,13 +52,13 @@ class BookController extends ActionController
         );
     }   
 
-    public function createAction(Book $newBook)
+    public function createAction(Book $newBook): ResponseInterface 
     {
         // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($newBook);
         // die;
 
         $this->bookRepository->add($newBook);
-        
+
         $this->addFlashMessage(
             'Das Buch wurde erfolgreich gespeichert.',
             'Erfolg!',
