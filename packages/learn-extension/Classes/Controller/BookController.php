@@ -54,9 +54,6 @@ class BookController extends ActionController
 
     public function createAction(Book $newBook): ResponseInterface 
     {
-        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($newBook);
-        // die;
-
         $this->bookRepository->add($newBook);
 
         $this->addFlashMessage(
